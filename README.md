@@ -1,5 +1,5 @@
 # FirstServerSetup
-This shell script helps you to setup your new server.
+This shell script helps you to setup your new linux server with basic update and installation functions like yum and vim.
 Basicly what shell does;
 
 1. Updating Yum 
@@ -12,3 +12,7 @@ Basicly what shell does;
 8. Setting Fail2Ban for first boot
 9. Creating a config file for Fail2Ban (Bantime for 1 day)
 10. Restarting Fail2Ban service
+
+#Usage
+
+Run shell script in command line and script lets you to go through step by step.
