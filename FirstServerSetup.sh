@@ -7,8 +7,8 @@ else
         echo "Stopped by user"
 fi
 
-#2 - Let's update Vim instance
-echo "Would you like to update Yum? [y,n] "
+#2 - Let's install Vim instance
+echo "Would you like to install Vim? [y,n] "
 read input
 if [[ $input == "Y" || $input == "y" ]]; then
         sudo yum install -y vim
