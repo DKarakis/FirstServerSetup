@@ -17,14 +17,14 @@ else
 fi
 
 #3 - Let's read SSH Pub Key
-echo "Please insert ssh folder address."
-read folder
+echo "Please insert ssh file address."
+read file
 
 mkdir ~/.ssh
 chmod 700 ~/.ssh
-cat id_rsa.pub >> folder
+cat id_rsa.pub >> file
 chmod 600 ~/.ssh/authorized_keys
-mv folder ~/.ssh
+mv file ~/.ssh
 
 #4.1 - SSH Password Disable
 echo "Would you like to disable ssh password when login ? 1/2 [y,n] "
