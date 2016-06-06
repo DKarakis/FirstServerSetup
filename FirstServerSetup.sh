@@ -17,14 +17,14 @@ else
 fi
 
 #3 - Let's read SSH Pub Key
-echo "Please insert ssh file address."
-read file
+echo "Please insert ssh folder address."
+read folder
 
 mkdir ~/.ssh
 chmod 700 ~/.ssh
-cat id_rsa.pub >> file
+cat id_rsa.pub >> folder
 chmod 600 ~/.ssh/authorized_keys
-mv file ~/.ssh
+mv folder ~/.ssh
 
 #4.1 - SSH Password Disable
 echo "Would you like to disable ssh password when login ? 1/2 [y,n] "
@@ -40,7 +40,7 @@ fi
 echo "Would you like to disable ssh password when login? 2/2 [y,n] "
 read input
 if [[ $input == "Y" || $input == "y" ]]; then
-        sed -i '/PasswordAuthentication/c\PasswordAuthentication yes' /etc/ssh/sshd_config
+        sed -i '/PasswordAuthentication/c\PasswordAuthentication no' /etc/ssh/sshd_config
 else
         echo "Stopped by user"
 fi
@@ -65,8 +65,17 @@ else
         echo "Stopped by user"
 fi
 
+#8 - Fail2Ban Installation
+echo "Would you like to install Epel Release? [y,n] "
+read input
+if [[ $input == "Y" || $input == "y" ]]; then
+        sudo yum install epel-release
+else
+        echo "Stopped by user"
+fi
 
-#7 - Fail2Ban Installation
+
+#9 - Fail2Ban Installation
 echo "Would you like to install Fail2Ban? [y,n] "
 read input
 if [[ $input == "Y" || $input == "y" ]]; then
@@ -76,7 +85,7 @@ else
 fi
 
 
-#8 - Fail2Ban first boot
+#10 - Fail2Ban first boot
 echo "Would you like Fail2Ban to run in first boot? [y,n] "
 read input
 if [[ $input == "Y" || $input == "y" ]]; then
@@ -85,7 +94,7 @@ else
         echo "Stopped by user"
 fi
 
-#9 - Fail2Ban Creating a Conf File
+#11 - Fail2Ban Creating a Conf File
 echo "Would you like to create config file for Fail2Ban? [y,n] "
 read input
 if [[ $input == "Y" || $input == "y" ]]; then
@@ -104,7 +113,7 @@ else
 fi
 
 
-#10 - Fail2Ban Restart
+#12 - Fail2Ban Restart
 echo "Would you like to restart Fail2Ban? [y,n] "
 read input
 if [[ $input == "Y" || $input == "y" ]]; then
@@ -114,5 +123,3 @@ else
 fi
 
 echo "All is done. Happy coding :) "
-
-fi
